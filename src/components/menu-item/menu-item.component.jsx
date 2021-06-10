@@ -1,9 +1,15 @@
 import React from 'react';
-import './menu-item.styles.scss'
+import { withRouter } from 'react-router-dom';
+import './menu-item.styles.scss';
 
-const MenuItem = ({title, imageUrl, size}) => {
+
+const MenuItem = ({title, imageUrl, size, linkUrl, history, match}) => {
     return (
-        <div 
+
+        // ${match.url} is to get the current url of the website 
+        //${linkUrl} is to add the exact link we want to visit dynamically because we are using one menu item to render all our menu item
+
+        <div onClick={()=> {history.push(`${match.url}${linkUrl}`)}}
         className = {`${size} menu-item`}  >
             <div className="background-image"
                 style={{
@@ -24,4 +30,5 @@ const MenuItem = ({title, imageUrl, size}) => {
     )
 }
 
-export default MenuItem
+//withRouter is to help solve props drilling and make history, match and url params available
+export default withRouter(MenuItem);

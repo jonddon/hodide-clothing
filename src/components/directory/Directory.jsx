@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import './directory.styles.scss'
-import MenuItem from '../menu-item/menu-item.component'
+import './Directory.scss'
+import MenuItem from '../menu-item/MenuItem'
 
 export default class Directory extends Component {
     constructor(props) {
@@ -50,11 +50,11 @@ export default class Directory extends Component {
     render() {
         return (
             <div className="directory-menu">
+                {/* Spread other properties to have access to them in the component since they have the same name */}
+
                 {this.state.sections.map(({ id, ...otherSectionProps  } )=> (
                     <MenuItem key={id} {...otherSectionProps} />
-                )
-                   
-               )} 
+                ))} 
             </div>
         )
     }
